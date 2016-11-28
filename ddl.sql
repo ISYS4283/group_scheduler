@@ -1,0 +1,14 @@
+DROP TABLE group_meetings;
+DROP TABLE group_names;
+
+CREATE TABLE group_names (
+	id INT IDENTITY PRIMARY KEY,
+	groupname VARCHAR(24) NOT NULL UNIQUE
+);
+
+CREATE TABLE group_meetings (
+	id INT IDENTITY PRIMARY KEY,
+	groupid INT NOT NULL FOREIGN KEY REFERENCES group_names(id) UNIQUE,
+	time_start DATETIME NOT NULL UNIQUE,
+	time_end   DATETIME NOT NULL UNIQUE
+);
